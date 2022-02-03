@@ -33,14 +33,14 @@ app.get('/results', (req, res) => {
         }).next().text();
         // console.log(`capacity is ${capcity}`);
 
-        // const scrapedData = {
-        //     demand: demand,
-        //     capcity: capacity
-        // }
+        const scrapedData = {
+            demand: demand,
+            capcity: capacity
+        }
 
-        const scrapedData = [];
-        scrapedData.push(demand);
-        scrapedData.push(capacity);
+        // const scrapedData = [];
+        // scrapedData.push(demand);
+        // scrapedData.push(capacity);
 
         res.json(scrapedData);
         // res.json(capacity);
