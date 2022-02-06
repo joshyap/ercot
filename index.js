@@ -22,47 +22,24 @@ app.get('/results', (req, res) => {
         const html = response.data;        
         const $ = cheerio.load(html);
 
-
         const demand = $('.tdLeft').filter(function() {
             return $(this).text().trim() === 'Actual System Demand';
-        }).next().text();
-        // console.log(`demand is ${demand}`);
+        }).next().text();        
 
         const capacity = $('.tdLeft').filter(function() {
             return $(this).text().trim() === 'Total System Capacity (not including Ancillary Services)';
         }).next().text();
-        // console.log(`capacity is ${capcity}`);
 
-        const scrapedData = {
-            demand: demand,
-            capcity: capacity
-        }
-
-        // const scrapedData = [];
-        // scrapedData.push(demand);
-        // scrapedData.push(capacity);
+        
+        const scrapedData = [];
+        scrapedData.push({
+            demand,
+            capacity
+        })
 
         res.json(scrapedData);
-        // res.json(capacity);
-    });
+    }).catch(err => console.log(err));
 });
-
-// axios(url)
-//     .then(response => {
-//         const html = response.data;        
-//         const $ = cheerio.load(html);
-
-
-//         const demand = $('.tdLeft').filter(function() {
-//             return $(this).text().trim() === 'Actual System Demand';
-//         }).next().text();
-//         console.log(`demand is ${demand}`);
-
-//         const capcity = $('.tdLeft').filter(function() {
-//             return $(this).text().trim() === 'Total System Capacity (not including Ancillary Services)';
-//         }).next().text();
-//         console.log(`capacity is ${capcity}`);
-//     });
 
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`));
