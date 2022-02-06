@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
 const cors = require('cors');
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 const url = 'https://www.ercot.com/content/cdr/html/real_time_system_conditions.html';
