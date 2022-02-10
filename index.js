@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 const url = 'https://www.ercot.com/content/cdr/html/real_time_system_conditions.html';
 app.use(cors());
-app.use(express.static(__dirname + '/src'))
-
+// app.use(express.static(__dirname + '/src'))
+app.use(express.static('src'));
 // const path = require('path');
 
 
