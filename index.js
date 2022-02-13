@@ -2,15 +2,24 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const PORT = process.env.PORT || 8000;
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// app.use(express.static('src'));
+app.use('/src', express.static('src'))
+
 const url = 'https://www.ercot.com/content/cdr/html/real_time_system_conditions.html';
 app.use(cors());
 
+
+
 // app.use(express.static(__dirname + '/src'))
-app.use(express.static('src'));
+// app.use(express.static('src'));
 // app.use('/static', express.static('src'));
 
 // const path = require('path');
@@ -19,7 +28,8 @@ app.use(express.static('src'));
 // app.METHOD(PATH, HANDLER)
 app.get('/', function(req, res) {
     // res.json('This is my webscraper');
-    res.sendFile('index.html', { root: '.' })
+    // res.sendFile('index.html', { root: '.' })
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/results', (req, res) => {
