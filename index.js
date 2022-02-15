@@ -10,25 +10,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static('src'));
 app.use('/src', express.static('src'))
 
 const url = 'https://www.ercot.com/content/cdr/html/real_time_system_conditions.html';
 app.use(cors());
 
 
-
-// app.use(express.static(__dirname + '/src'))
-// app.use(express.static('src'));
-// app.use('/static', express.static('src'));
-
-// const path = require('path');
-
-
 // app.METHOD(PATH, HANDLER)
-app.get('/', function(req, res) {
-    // res.json('This is my webscraper');
-    // res.sendFile('index.html', { root: '.' })
+app.get('/', function(req, res) {    
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
