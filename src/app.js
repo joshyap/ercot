@@ -11,7 +11,8 @@ const update = () => {
     const now = new Date();
     timeLocation.innerHTML = `${now.getHours()}:${now.getMinutes()} - ${now.getDay()}/${now.getMonth()}/${now.getFullYear()}`;
 
-    fetch('http://localhost:8000/results')
+    // fetch('http://localhost:8000/results')
+    fetch('https://ercot.herokuapp.com/results')
     .then(response => {return response.json()})
     .then(data => {
         // console.log(data);
